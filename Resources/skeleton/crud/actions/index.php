@@ -9,15 +9,24 @@
      */
     public function indexAction()
     {
-        $em = $this->getDoctrine()->getEntityManager();
-
-        $entities = $em->getRepository('{{ bundle }}:{{ entity }}')->findAll();
-
+        $em   = $this->getDoctrine()->getEntityManager();
+        $sort = $this->getSortInfo();
+        
+        if ($sort) {
+            $query = sprintf('SELECT q FROM {{ bundle }}:{{ entity }} q ORDER BY q.%s %s', $sort['column'], $sort['order']);
+            $entities = $em->createQuery($query)->getResult();
+        } else {
+            $entities = $em->getRepository('{{ bundle }}:{{ entity }}')->findAll();
+        }
 {% if 'annotation' == format %}
-        return array('entities' => $entities);
+        return array(
+            'entities' => $entities,
+            'sort'     => $sort,
+        );
 {% else %}
         return $this->render('{{ bundle }}:{{ entity|replace({'\\': '/'}) }}:index.html.twig', array(
-            'entities' => $entities
+            'entities' => $entities,
+            'sort'     => $sort,
         ));
 {% endif %}
     }

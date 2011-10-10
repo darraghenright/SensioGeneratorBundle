@@ -4,12 +4,18 @@
     
     <h2>{{ entity }} list</h1>
     
-    <table class="records_list">
+    <table id="{{ entity|lower }}_list" class="records_list">
         <thead>
             <tr>
             {%- for field, metadata in fields %}
     
-                <th>{{ field|capitalize }}</th>
+                <th>
+                {{ '{% if sort %}' }}
+                    <a {{ '{% if "'~ field ~'" == sort.column %}class="sort_{{ sort.order }}"{% endif %}' }} href="{{ "{{ path('"~ route_name_prefix ~"', { 'sort': '"~ field ~"', 'sort_order': sort."~ field ~" }) }}"}}">{{ field }}</a>
+                {{ '{% else %}' }}
+                    <a href="{{ "{{ path('"~ route_name_prefix ~"', { 'sort': '"~ field ~"', 'sort_order': 'asc' }) }}"}}">{{ field }}</a>
+                {{ '{% endif %}' }}
+                </th>
     
             {%- endfor %}
     
@@ -50,8 +56,8 @@
     </table>
     
     {% if 'new' in actions %}
-    <ul>
-        <li>
+    <ul class="record_actions">
+        <li class="record_new">
             <a href="{{ "{{ path('"~ route_name_prefix ~"_new') }}" }}">
                 Create a new entry
             </a>

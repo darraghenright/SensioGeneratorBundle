@@ -172,6 +172,7 @@ class DoctrineCrudGenerator extends Generator
 
         $this->renderFile($this->skeletonDir, 'controller.php', $target, array(
             'actions'           => $this->actions,
+            'fields'            => $this->metadata->fieldMappings,
             'route_prefix'      => $this->routePrefix,
             'route_name_prefix' => $this->routeNamePrefix,
             'dir'               => $this->skeletonDir,

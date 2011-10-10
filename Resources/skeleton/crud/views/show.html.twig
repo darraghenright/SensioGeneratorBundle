@@ -4,7 +4,7 @@
 
     <h2>{{ entity }}</h2>
     
-    <table class="record_properties">
+    <table id="{{ entity }}_show" class="record_show">
         <tbody>
         {%- for field, metadata in fields %}
     

@@ -46,4 +46,7 @@ class {{ entity_class }}Controller extends Controller
         {%- include 'actions/delete.php' %}
     {%- endif %}
 
+    {%- if 'index' in actions %}
+        {%- include 'actions/sort.php' %}
+    {%- endif %}
 }
