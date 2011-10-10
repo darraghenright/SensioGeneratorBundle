@@ -1,9 +1,9 @@
 
-                <ul>
+                <ul class="record_actions">
 
                 {%- for action in record_actions %}
 
-                    <li>
+                    <li class="record_{{ action }}">
                         <a href="{{ "{{ path('"~ route_name_prefix ~"_"~ action ~"', { 'id': entity.id }) }}" }}">{{ action }}</a>
                     </li>
 
