@@ -2,10 +2,10 @@
     /**
      * Add sorting for {{ entity }} list view.
      *
-    *  @param \Doctrine\ORM\Query\QueryBuilder $qb
-     * @return array|false
+     * @param \Doctrine\ORM\Query\QueryBuilder $qb
+     * @return mixed
      */
-    protected function addSorting($qb)
+    protected function sortQuery($qb)
     {
         $sort = false;
         
@@ -19,7 +19,7 @@
                 '{{ field }}' => 'asc',
 {% endfor %}
                 'column' => $column,
-                'order'  => $order,
+                'order' => $order,
             );
             
             $sort[$column] = 'asc' == $order ? 'desc' : 'asc';

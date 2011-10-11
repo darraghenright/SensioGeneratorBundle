@@ -3,24 +3,26 @@
      * Add pagination for {{ entity }} list view
      *
      * @param \Doctrine\ORM\Query\QueryBuilder $qb
-     * @return
+     * @param int $maxResults
+     *
+     * @return int
      */
-    protected function addPagination($qb, $maxResults) 
+    protected function paginateQuery($qb, $maxResults) 
     {
-        $count = $this->getNumberOfEntities();
         $page = (int) $this->getRequest()->get('page');
         
         if ($page > 0) {
             $page--;
         }
         
-        $pages = ceil($count / $maxResults);
+        $pages = ceil($this->getNumberOfEntities() / $maxResults);
         
         if ($page > $pages) {
             throw new \UnexpectedValueException('The requested page number does not exist.');
         }
         
-        $qb->setFirstResult($page * $maxResults)->setMaxResults($maxResults);
+        $qb->setFirstResult($page * $maxResults)
+           ->setMaxResults($maxResults);
             
         return $pages;
     }
@@ -36,8 +38,8 @@
             ->getEntityManager()
             ->createQueryBuilder();
         
-        $query = $qb->add('select', 'COUNT(q)')
-            ->add('from', '{{ bundle }}:{{ entity }} q')
+        $query = $qb->select('COUNT(q)')
+            ->from('{{ bundle }}:{{ entity }}', 'q')
             ->getQuery();
         
         return $query->getSingleScalarResult();

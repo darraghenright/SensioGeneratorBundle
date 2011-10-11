@@ -15,11 +15,11 @@
             ->getEntityManager()
             ->createQueryBuilder();        
         
-        $qb->add('select', 'q')
-           ->add('from', '{{ bundle }}:{{ entity }} q');
+        $qb->select('q')
+           ->from('{{ bundle }}:{{ entity }}', 'q');
         
-        $sort  = $this->addSorting($qb);
-        $pages = $this->addPagination($qb, $maxResults);
+        $sort  = $this->sortQuery($qb);
+        $pages = $this->paginateQuery($qb, $maxResults);
         
         $entities = $qb->getQuery()->getResult();
         
