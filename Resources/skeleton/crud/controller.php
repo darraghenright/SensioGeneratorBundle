@@ -49,4 +49,8 @@ class {{ entity_class }}Controller extends Controller
     {%- if 'index' in actions %}
         {%- include 'actions/sort.php' %}
     {%- endif %}
+    
+    {%- if 'index' in actions %}
+        {%- include 'actions/paginate.php' %}
+    {%- endif %}
 }

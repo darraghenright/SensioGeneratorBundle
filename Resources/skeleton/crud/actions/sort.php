@@ -1,11 +1,11 @@
 
-
     /**
-     * Get sort data for {{ entity }} list view.
+     * Add sorting for {{ entity }} list view.
      *
+    *  @param \Doctrine\ORM\Query\QueryBuilder $qb
      * @return array|false
      */
-    protected function getSortInfo()
+    protected function addSorting($qb)
     {
         $sort = false;
         
@@ -23,6 +23,7 @@
             );
             
             $sort[$column] = 'asc' == $order ? 'desc' : 'asc';
+            $qb->add('orderBy', sprintf('q.%s %s', $column, $order));
         }
         
         return $sort;
