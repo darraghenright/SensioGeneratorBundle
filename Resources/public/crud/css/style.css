@@ -1,0 +1,91 @@
+body
+{
+    font: 14px/20px normalHelvetica, sans-serif;
+}  
+
+a
+{
+    text-decoration: none;
+}
+ 
+/* record table */
+
+.records_list
+{
+    border-collapse: collapse;
+}
+
+tr
+{
+    border: 1px solid #E7EEF6;
+    height: 32px;
+    line-height: 32px;
+}
+
+td
+{
+    padding: 0 8px;
+}
+
+.odd
+{
+    background: #f3f9ff;
+}
+
+.even
+{
+    background: #fff;
+}
+
+.sort_asc
+{
+    background: url('../images/asc.png') no-repeat left center; 
+    padding-left: 18px;
+}
+
+.sort_desc
+{
+    background: url('../images/desc.png') no-repeat left center; 
+    padding-left: 18px;
+}
+
+tr:hover td
+{
+    background: #ffe;
+}
+
+/* actions */
+
+ul.record_actions
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.record_actions li
+{
+    float: left;
+    margin-right: 8px;
+    text-indent: 18px;
+}
+
+.record_show
+{
+    background: url('../images/default.png') no-repeat left center;
+}
+
+.record_edit
+{
+    background: url('../images/edit.png') no-repeat left center;
+}
+
+.record_delete
+{
+    background: url('../images/delete.png') no-repeat left center;
+}
+
+.record_new
+{
+    background: url('../images/new.png') no-repeat left center;
+}

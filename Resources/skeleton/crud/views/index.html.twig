@@ -1,7 +1,12 @@
 {{ "{% extends '::base.html.twig' %}" }}
 
+{{ "{% block stylesheets %}" }}
+    {{ '{{ parent() }}' }}
+    <link rel="stylesheet" type="text/css" media="all" href="{{ "{{ asset('bundles/sensiogenerator/crud/css/style.css') }}" }}" />
+{{ '{% endblock %}' }}
+
 {{ "{% block body %}" }}
-    
+
     <h2>{{ entity }} list</h1>
     
     <table id="{{ entity|lower }}_list" class="records_list">
