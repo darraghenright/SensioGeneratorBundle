@@ -4,7 +4,7 @@
                 {%- for action in record_actions %}
 
                     <li class="record_{{ action }}">
-                        <a href="{{ "{{ path('"~ route_name_prefix ~"_"~ action ~"', { 'id': entity.id }) }}" }}">{{ action }}</a>
+                        <a href="{{ "{{ path('"~ route_name_prefix ~"_"~ action ~"', { 'id': entity.id }) }}" }}">{{ action|capitalize }}</a>
                     </li>
 
                 {%- endfor %}

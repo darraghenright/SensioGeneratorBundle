@@ -1,24 +1,21 @@
 {{ "{% extends '::base.html.twig' %}" }}
 
-{{ "{% block stylesheets %}" }}
-    {{ '{{ parent() }}' }}
-    <link rel="stylesheet" type="text/css" media="all" href="{{ "{{ asset('bundles/sensiogenerator/crud/css/style.css') }}" }}" />
-{{ '{% endblock %}' }}
+{% include 'views/others/stylesheet.html.twig' %}
 
 {{ "{% block body %}" }}
 
-    <h2>{{ entity }} list</h1>
+    <h2>{{ entity }} List</h1>
     
-    <table id="{{ entity|lower }}_list" class="records_list">
+    <table id="{{ entity|lower }}_list" class="crud_table">
         <thead>
             <tr>
             {%- for field, metadata in fields %}
-    
+                
                 <th>
                 {{ '{% if sort %}' }}
-                    <a {{ '{% if "'~ field ~'" == sort.column %}class="sort_{{ sort.order }}"{% endif %}' }} href="{{ "{{ path('"~ route_name_prefix ~"', { 'sort': '"~ field ~"', 'sort_order': sort."~ field ~" }) }}"}}">{{ field }}</a>
+                    <a {{ '{% if "'~ field ~'" == sort.column %}class="sort_{{ sort.order }}"{% endif %}' }} href="{{ "{{ path('"~ route_name_prefix ~"', { 'sort': '"~ field ~"', 'sort_order': sort."~ field ~" }) }}"}}">{{ metadata.columnName|replace({'_': ' '})|capitalize }}</a>
                 {{ '{% else %}' }}
-                    <a href="{{ "{{ path('"~ route_name_prefix ~"', { 'sort': '"~ field ~"', 'sort_order': 'asc' }) }}"}}">{{ field }}</a>
+                    <a href="{{ "{{ path('"~ route_name_prefix ~"', { 'sort': '"~ field ~"', 'sort_order': 'asc' }) }}"}}">{{ metadata.columnName|replace({'_': ' '})|capitalize }}</a>
                 {{ '{% endif %}' }}
                 </th>
     

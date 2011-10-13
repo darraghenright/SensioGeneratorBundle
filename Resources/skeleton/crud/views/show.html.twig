@@ -1,20 +1,17 @@
 {{ "{% extends '::base.html.twig' %}" }}
 
-{{ "{% block stylesheets %}" }}
-    {{ '{{ parent() }}' }}
-    <link rel="stylesheet" type="text/css" media="all" href="{{ "{{ asset('bundles/sensiogenerator/crud/css/style.css') }}" }}" />
-{{ '{% endblock %}' }}
+{% include 'views/others/stylesheet.html.twig' %}
 
 {{ "{% block body %}" }}
 
-    <h2>{{ entity }}</h2>
+    <h2>Show {{ entity }}</h2>
     
-    <table id="{{ entity }}_show" class="record_show">
+    <table id="{{ entity }}_show" class="crud_table">
         <tbody>
         {%- for field, metadata in fields %}
     
             <tr>
-                <th>{{ field|capitalize }}</th>
+                <th>{{ metadata.columnName|replace({'_': ' '})|capitalize }}</th>
     
             {%- if metadata.type in ['date', 'datetime'] %}
     

@@ -1,60 +1,72 @@
 body
 {
+    color: #333;
     font: 14px/20px normalHelvetica, sans-serif;
 }  
 
-a
+a:link,
+a:visited
 {
     text-decoration: none;
 }
- 
-/* record table */
 
-.records_list
+a:hover
+{
+    color: #c00;
+    text-decoration: underline;
+}
+ 
+/*
+ * crud table
+ */
+
+.crud_table
 {
     border-collapse: collapse;
 }
 
-tr
+.crud_table tr
 {
     border: 1px solid #E7EEF6;
     height: 32px;
     line-height: 32px;
 }
 
-td
+.crud_table td
 {
     padding: 0 8px;
 }
 
-.odd
+.crud_table .odd
 {
     background: #f3f9ff;
 }
 
-.even
+.crud_table .even
 {
     background: #fff;
 }
 
-.sort_asc
+.crud_table th .sort_asc
 {
     background: url('../images/asc.png') no-repeat left center; 
     padding-left: 18px;
 }
 
-.sort_desc
+.crud_table th .sort_desc
 {
     background: url('../images/desc.png') no-repeat left center; 
     padding-left: 18px;
 }
 
-tr:hover td
+.crud_table tr:hover td
 {
     background: #ffe;
 }
 
-/* actions */
+/*
+ * actions
+ */
 
 ul.record_actions
 {

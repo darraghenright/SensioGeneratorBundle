@@ -1,13 +1,10 @@
 {{ "{% extends '::base.html.twig' %}" }}
 
-{{ "{% block stylesheets %}" }}
-    {{ '{{ parent() }}' }}
-    <link rel="stylesheet" type="text/css" media="all" href="{{ "{{ asset('bundles/sensiogenerator/crud/css/style.css') }}" }}" />
-{{ '{% endblock %}' }}
+{% include 'views/others/stylesheet.html.twig' %}
 
 {{ "{% block body %}" }}
     
-    <h2>{{ entity }} creation</h2>
+    <h2>New {{ entity }} </h2>
     
     <form id="{{ entity }}_new" action="{{ "{{ path('"~ route_name_prefix ~"_create') }}" }}" method="post" {{ "{{ form_enctype(form) }}" }}>
         {{ "{{ form_widget(form) }}" }}
