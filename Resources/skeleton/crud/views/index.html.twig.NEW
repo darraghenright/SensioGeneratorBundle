@@ -1,0 +1,34 @@
+{{ "{% extends '::base.html.twig' %}" }}
+
+{% include 'views/others/stylesheet.html.twig' %}
+
+{{ "{% block body %}" }}
+
+    <h2>{{ entity }} List</h1>
+    
+    Doctrine\ORM\Mapping\ClassMetadata
+    
+    {{ '{%for entity in entities %}' }}
+    
+    {% for field, metadata in fields %}
+        <ul>
+            <li>
+                <ul>
+                    method call: {{ metadata.type }}
+                    {% if metadata.type not in ['date', 'datetime', 8, 4] %}
+                    <li>{{ '{{ entity.'~ metadata.fieldName ~' }}' }}</li>
+                    {% endif %}
+                    
+                    
+                </ul>
+            </li>
+        </ul>    
+    {% endfor %}
+    {{ '{% endfor %}' }}
+    
+    
+    
+    
+    
+    
+{{ "{% endblock %}" }}
