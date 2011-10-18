@@ -1,18 +1,19 @@
 body
 {
     color: #333;
-    font: 14px/20px normalHelvetica, sans-serif;
+    font: 12px/20px normal 'Lucida Grande', Arial, Helvetica, sans-serif;
 }  
 
 a:link,
 a:visited
 {
+    color: #39c;
     text-decoration: none;
 }
 
 a:hover
 {
-    color: #c00;
+    color: #f03;
     text-decoration: underline;
 }
  
@@ -32,9 +33,16 @@ a:hover
     line-height: 32px;
 }
 
+.crud_table tr,
 .crud_table td
 {
-    padding: 0 8px;
+    padding: 0 12px;
+}
+
+.crud_table td
+{
+    border: 1px solid #E7EEF6;
+
 }
 
 .crud_table .odd
@@ -100,4 +108,34 @@ ul.record_actions li
 .record_new
 {
     background: url('../images/new.png') no-repeat left center;
+}
+
+/* 
+ * pager
+ */
+
+ul#pager
+{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+ul#pager li
+{
+    display: inline;
+}
+
+ul#pager li a
+{
+    display: block;
+    float: left;
+    padding: 4px
+}
+
+ul#pager li a.active
+{
+    background: #E7EEF6;
+    color: #fff;
 }
