@@ -99,7 +99,7 @@ class DoctrineFormGenerator extends Generator
 
         foreach ($metadata->associationMappings as $fieldName => $relation) {
             if ($relation['type'] !== ClassMetadataInfo::ONE_TO_MANY) {
-                $fields[] = $fieldName;
+                $fields[$fieldName] = $fieldName;
             }
         }
 

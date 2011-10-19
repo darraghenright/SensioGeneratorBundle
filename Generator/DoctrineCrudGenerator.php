@@ -83,6 +83,7 @@ class DoctrineCrudGenerator extends Generator
             $this->filesystem->mkdir($dir, 0777);
         }
 
+        $this->generateLayoutView();
         $this->generateIndexView($dir);
 
         if (in_array('show', $this->actions)) {
@@ -209,6 +210,21 @@ class DoctrineCrudGenerator extends Generator
             'dir'               => $this->skeletonDir,
         ));
     }
+    
+    /**
+     * Generates the layout.html.twig template in the final bundle.
+     * Skip render file if it already exists.
+     *
+     * @param string $dir The path to the folder that hosts templates in the bundle
+     */
+    private function generateLayoutView()
+    {
+        $dir = sprintf('%s/Resources/views/layout.html.twig', $this->bundle->getPath());
+    
+        if (!file_exists($dir)) {
+            $this->renderFile($this->skeletonDir, 'views/layout.html.twig', $dir, array());
+        }
+    }
 
     /**
      * Generates the index.html.twig template in the final bundle.
@@ -219,6 +235,7 @@ class DoctrineCrudGenerator extends Generator
     {
         $this->renderFile($this->skeletonDir, 'views/index.html.twig', $dir.'/index.html.twig', array(
             'dir'               => $this->skeletonDir,
+            'bundle'            => $this->bundle->getName(),
             'entity'            => $this->entity,
             'fields'            => $this->metadata->fieldMappings,
             'actions'           => $this->actions,
@@ -237,6 +254,7 @@ class DoctrineCrudGenerator extends Generator
     {
         $this->renderFile($this->skeletonDir, 'views/show.html.twig', $dir.'/show.html.twig', array(
             'dir'               => $this->skeletonDir,
+            'bundle'            => $this->bundle->getName(),
             'entity'            => $this->entity,
             'fields'            => $this->metadata->fieldMappings,
             'actions'           => $this->actions,
@@ -254,6 +272,7 @@ class DoctrineCrudGenerator extends Generator
     {
         $this->renderFile($this->skeletonDir, 'views/new.html.twig', $dir.'/new.html.twig', array(
             'dir'               => $this->skeletonDir,
+            'bundle'            => $this->bundle->getName(),
             'route_prefix'      => $this->routePrefix,
             'route_name_prefix' => $this->routeNamePrefix,
             'entity'            => $this->entity,
@@ -270,6 +289,7 @@ class DoctrineCrudGenerator extends Generator
     {
         $this->renderFile($this->skeletonDir, 'views/edit.html.twig', $dir.'/edit.html.twig', array(
             'dir'               => $this->skeletonDir,
+            'bundle'            => $this->bundle->getName(),
             'route_prefix'      => $this->routePrefix,
             'route_name_prefix' => $this->routeNamePrefix,
             'entity'            => $this->entity,

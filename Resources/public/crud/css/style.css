@@ -1,17 +1,17 @@
-body
+#crud
 {
     color: #333;
     font: 12px/20px normal 'Lucida Grande', Arial, Helvetica, sans-serif;
 }  
 
-a:link,
-a:visited
+#crud a:link,
+#crud a:visited
 {
     color: #39c;
     text-decoration: none;
 }
 
-a:hover
+#crud a:hover
 {
     color: #f03;
     text-decoration: underline;
@@ -21,91 +21,120 @@ a:hover
  * crud table
  */
 
-.crud_table
+#crud table
 {
+    background: #fff;
     border-collapse: collapse;
 }
 
-.crud_table tr
+#crud table tr
 {
     border: 1px solid #E7EEF6;
     height: 32px;
     line-height: 32px;
 }
 
-.crud_table tr,
-.crud_table td
+#crud table th,
+#crud table td
 {
     padding: 0 12px;
 }
 
-.crud_table td
+#crud table td
 {
     border: 1px solid #E7EEF6;
 
 }
 
-.crud_table .odd
+#crud table .odd
 {
     background: #f3f9ff;
 }
 
-.crud_table .even
+#crud table .even
 {
     background: #fff;
 }
 
-.crud_table th .sort_asc
+#crud table th .sort_asc
 {
     background: url('../images/asc.png') no-repeat left center; 
     padding-left: 18px;
 }
 
-.crud_table th .sort_desc
+#crud table th .sort_desc
 {
     background: url('../images/desc.png') no-repeat left center; 
     padding-left: 18px;
 }
 
-.crud_table tr:hover td
+#crud table tr:hover td
 {
     background: #ffe;
+}
+
+#crud table.show th
+{
+    text-align: left;
+}
+
+#crud table.show td
+{
+    background: #f3f9ff;
 }
 
 /*
  * actions
  */
 
-ul.record_actions
+#crud ul.record_actions
 {
     list-style: none;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+    line-height: 32px;
 }
 
-ul.record_actions li
+#crud ul.record_actions li
 {
     float: left;
     margin-right: 8px;
     text-indent: 18px;
 }
 
-.record_show
+#crud .record_list
 {
     background: url('../images/default.png') no-repeat left center;
 }
 
-.record_edit
+#crud .record_show
 {
-    background: url('../images/edit.png') no-repeat left center;
+    background: url('../images/default.png') no-repeat left center;
 }
 
-.record_delete
+#crud .record_new
+{
+    background: url('../images/new.png') no-repeat left center;
+}
+
+#crud .record_edit
+{
+    background: url('../images/edit.png') no-repeat left center;
+    border: none;
+}
+
+#crud .record_delete
 {
     background: url('../images/delete.png') no-repeat left center;
 }
 
-.record_new
+#crud .record_delete #form
+{
+    border: none;
+}
+
+#crud .record_new
 {
     background: url('../images/new.png') no-repeat left center;
 }
@@ -114,7 +143,7 @@ ul.record_actions li
  * pager
  */
 
-ul#pager
+#crud ul#pager
 {
     list-style: none;
     margin: 0;
@@ -122,20 +151,94 @@ ul#pager
     overflow: hidden;
 }
 
-ul#pager li
+#crud ul#pager li
 {
     display: inline;
 }
 
-ul#pager li a
+#crud ul#pager li a
 {
     display: block;
     float: left;
     padding: 4px
 }
 
-ul#pager li a.active
+#crud ul#pager li a.active
 {
     background: #E7EEF6;
     color: #fff;
+}
+
+/**
+ * notifications
+ */
+
+#crud div.error
+{
+    background: #fee url('../images/error.png') no-repeat 8px center;
+    border: 1px solid #fcc;
+    color: #c00;
+    margin-bottom: 8px;
+    padding: 6px;
+    text-indent: 24px;
+}
+
+#crud div.success
+{
+    background: #efe url('../images/tick.png') no-repeat 8px center;
+    border: 1px solid #beb;
+    color: #090;
+    margin-bottom: 8px;
+    padding: 6px;    
+    text-indent: 24px;
+}
+
+#crud div.notice
+{
+    background: #ffe url('../images/default.png') no-repeat 8px center;
+    border: 1px solid #eeb;
+    color: #990;
+    margin-bottom: 8px;
+    padding: 6px;    
+    text-indent: 24px;
+}
+
+/**
+ * forms
+ */
+#crud .form_new,
+#crud .form_edit
+{
+    width: 50%;
+}
+
+#crud .form_new div,
+#crud .form_edit div
+{
+    background: #f3f9ff;
+    border: 1px solid #E7EEF6;
+    border-top: none;
+}
+
+#crud .form_new div div,
+#crud .form_edit div div
+{
+    border: none;
+    border-top: 1px solid #E7EEF6;
+    padding: 8px;
+}
+
+#crud .form_new div div div,
+#crud .form_edit div div div
+{
+    border: none;
+    padding: 0;
+}
+
+#crud .form_new label,
+#crud .form_edit label
+{
+    float: left;
+    font-weight: bold;
+    width: 50%;
 }

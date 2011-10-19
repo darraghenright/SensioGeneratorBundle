@@ -10,9 +10,11 @@ class {{ form_class }} extends AbstractType
     public function buildForm(FormBuilder $builder, array $options)
     {
         $builder
-        {%- for field in fields %}
+        {%- for label, field in fields %}
 
-            ->add('{{ field }}')
+            ->add('{{ field }}', null, array(
+                'label' => "{{ label|replace({'_': ' '})|capitalize }}"
+            ))
 
         {%- endfor %}
 

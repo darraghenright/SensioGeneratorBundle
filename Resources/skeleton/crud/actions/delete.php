@@ -25,7 +25,9 @@
             $em->remove($entity);
             $em->flush();
         }
-
+        
+        $this->get('session')->setFlash('success', 'The selected item was deleted successfully.');
+        
         return $this->redirect($this->generateUrl('{{ route_name_prefix }}'));
     }
 

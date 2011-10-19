@@ -28,6 +28,8 @@
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
+            
+            $this->get('session')->setFlash('success', 'The record was updated successfully.');
 
             return $this->redirect($this->generateUrl('{{ route_name_prefix }}_edit', array('id' => $id)));
         }

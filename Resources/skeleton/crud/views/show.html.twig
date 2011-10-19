@@ -1,4 +1,4 @@
-{{ "{% extends '::base.html.twig' %}" }}
+{{ "{% extends '"~ bundle ~"::layout.html.twig' %}" }}
 
 {% include 'views/others/stylesheet.html.twig' %}
 
@@ -6,7 +6,9 @@
 
     <h2>Show {{ entity }}</h2>
     
-    <table id="{{ entity }}_show" class="crud_table">
+    {%- include "views/others/flash.html.twig" %}
+    
+    <table class="show">
         <tbody>
         {%- for field, metadata in fields %}
     
@@ -24,13 +26,24 @@
             {%- endif %}
     
             </tr>
-    
+                
         {%- endfor %}
     
         </tbody>
     </table>
     
     {% set hide_edit, hide_delete = false, false %}
-    {% include 'views/others/record_actions.html.twig' %}
-
+    
+    <ul class="record_actions">
+        {% include 'views/others/record_actions.html.twig' %}
+        {% if ('delete' in actions) and (not hide_delete) %}
+        <li class="record_delete">
+            <form action="{{ "{{ path('"~ route_name_prefix ~"_delete', { 'id': entity.id }) }}" }}" method="post">
+                {{ '{{ form_widget(delete_form) }}' }}
+                <button type="submit">Delete</button>
+            </form>
+        </li>
+    {% endif %}
+    </ul>
+    
 {{ "{% endblock %}" }}
